@@ -1,152 +1,197 @@
-/* Reset básico */
-* {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
 
-/* Fondo general */
 body {
-    background: #f4f6f8;
-    margin: 0;
-    padding: 0;
+  background: #f4f6f8;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Contenedor principal */
-.container {
-    max-width: 520px;
-    background: #ffffff;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.ux-card {
+  max-width: 420px;
+  margin: 60px auto;
+  background: white;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* Título */
-h1 {
-    text-align: center;
-    color: #b11226;
-    margin-bottom: 5px;
+/* Header: logo + title */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 28px auto 8px;
+  max-width: 520px;
+  padding: 0 16px;
+}
+.header > div { text-align: center; }
+.logo {
+  display: block;
+  max-width: 200px;
+  height: auto;
 }
 
-/* Subtítulo */
-.subtitle {
-    text-align: center;
-    color: #555;
-    margin-bottom: 25px;
-    font-size: 14px;
+/* Progress */
+.progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-/* Grupo de campos */
-.form-group {
-    margin-bottom: 18px;
+.step {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ddd;
+  color: white;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Etiquetas */
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #333;
+.step.active {
+  background: #042940;
 }
 
-/* Inputs */
-input[type="text"],
-select,
-textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+.line {
+  flex: 1;
+  height: 2px;
+  background: #ddd;
 }
 
-/* Textarea */
-textarea {
-    resize: none;
+/* Steps */
+.ux-step {
+  display: none;
+  animation: fade 0.4s ease;
 }
 
-/* Rating */
+.ux-step.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateX(15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 5px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #042940;
+}
+
 .rating {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+  justify-content: center;
 }
-
 .rating label {
-    font-weight: normal;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(4,41,64,0.04);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.rating input[type="radio"] {
+  width: 16px;
+  height: 16px;
 }
 
-/* Botón */
 button {
-    width: 100%;
-    padding: 12px;
-    background: #b11226;
-    border: none;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  background: #042940;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-button:hover {
-    background: #8e0f1f;
+@media (max-width: 480px) {
+  .header { gap: 10px; margin-top: 18px; }
+  .logo { max-width: 90px; }
+  h2 { font-size: 18px; }
+  /* en móvil, las opciones vuelven a columna y ocupan todo el ancho */
+  .rating { flex-direction: column; align-items: stretch; }
+  .rating label { width: 100%; justify-content: center; }
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: #888;
-}
-
-/* (Se eliminó modal de login; sólo se mantiene el loader) */
-
-/* Loading overlay */
+/* Loading overlay and chicken animation */
 .loading-overlay {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-    background: rgba(255,255,255,0.7);
-    z-index: 1100;
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255,255,255,0.85);
+  z-index: 1200;
 }
 .spinner {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 5px solid rgba(0,0,0,0.08);
-    border-top-color: #b11226;
-    animation: spin 1s linear infinite;
+  width: 100%;
+  height: 140px;
+  position: relative;
+  display: block;
+  overflow: hidden;
 }
-.loading-text {
-    color: #333;
-    font-weight: 600;
+.egg {
+  width: 160px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 55%;
+  transform: translate(-30vw, -50%) rotate(0deg);
+}
+.egg g { transform-origin: 50% 50%; }
+
+/* Sólo cuando tenga la clase .run la animación se ejecuta; esto permite reiniciarla vía JS */
+.egg.run {
+  animation: runAcross 5s linear forwards;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+@keyframes runAcross {
+  0% { transform: translate(-30vw, -50%) rotate(0deg); }
+  100% { transform: translate(125vw, -50%) rotate(1080deg); }
 }
 
-/* Button states */
-.disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-.primary {
-    background: #b11226;
-    color: #fff;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-}
+.loading-text { color: #333; font-weight: 600; }
 
-/* Small responsive tweaks */
-@media (max-width: 420px) {
-    .container { margin: 20px; padding: 20px; }
-    .container { margin: 20px; padding: 20px; }
+/* Confirm message */
+.confirm-message {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 24%;
+  transform: translateX(-50%);
+  background: #f6fff7;
+  border: 1px solid rgba(46,204,113,0.15);
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  align-items: center;
+  gap: 10px;
+  z-index: 1300;
 }
+.confirm-message.show { display: flex; }
+.confirm-text { font-weight: 700; color: #2b7a3a; }
