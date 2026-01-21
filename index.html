@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta de Satisfacción</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Encuesta de Satisfacción</h1>
+    <p class="subtitle">
+        Corporativo Avícola del Caribe agradece tu opinión
+    </p>
+
+    <form id="encuestaForm">
+
+        <div class="form-group">
+            <label>Nombre (opcional)</label>
+            <input type="text" name="nombre">
+        </div>
+
+        <div class="form-group">
+            <label>Área o servicio recibido</label>
+            <select name="area" required>
+                <option value="">Selecciona</option>
+                <option>Ventas</option>
+                <option>Logística</option>
+                <option>Atención al Cliente</option>
+                <option>Facturación</option>
+                <option>Otro</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>¿Qué tan satisfecho estás?</label>
+            <div class="rating">
+                <label><input type="radio" name="satisfaccion" value="1" required> 1</label>
+                <label><input type="radio" name="satisfaccion" value="2"> 2</label>
+                <label><input type="radio" name="satisfaccion" value="3"> 3</label>
+                <label><input type="radio" name="satisfaccion" value="4"> 4</label>
+                <label><input type="radio" name="satisfaccion" value="5"> 5</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Trato del personal</label>
+            <select name="trato" required>
+                <option value="">Selecciona</option>
+                <option>Excelente</option>
+                <option>Bueno</option>
+                <option>Regular</option>
+                <option>Malo</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Comentarios</label>
+            <textarea name="comentarios" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Enviar encuesta</button>
+    </form>
+
+    <footer>
+        © 2026 Corporativo Avícola del Caribe
+    </footer>
+</div>
+<script>
+const form = document.getElementById("encuestaForm");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); 
+
+    const formData = new FormData(form);
+
+    fetch("https://script.google.com/macros/s/AKfycbybbKITqAGmX1lOqYF6b1gyaFylfPH6M1LLuWIEBsl7TTECN3dad5tnVIZGI5HpshMdjQ/exec", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Gracias por tu respuesta");
+        form.reset();
+    })
+    .catch(error => {
+        alert("Error al enviar la encuesta");
+        console.error(error);
+    });
+});
+</script>
+
+</body>
+</html>
