@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Encuesta de Satisfacción</title>
+    <link rel="stylesheet" href="ux.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <!-- CARD UX -->
+        <div class="ux-card">
+
+            <header class="header">
+                <img src="assets/CADC.png" alt="Logo Corporativo Avícola del Caribe" class="logo">
+                <div>
+                    <h1>Encuesta de Satisfacción</h1>
+                    <p class="subtitle">Corporativo Avícola del Caribe agradece tu opinión</p>
+                </div>
+            </header>
+
+            <!-- Progress -->
+            <div class="progress">
+                <div class="step active">1</div>
+                <div class="line"></div>
+                <div class="step">2</div>
+                <div class="line"></div>
+                <div class="step">3</div>
+                <div class="line"></div>
+                <div class="step">4</div>
+                 <div class="line"></div>
+                <div class="step">5</div>  
+            </div>
+
+            <!-- FORM -->
+            <form id="encuestaForm">
+
+                <!-- STEP 1 -->
+                <section class="ux-step active">
+                    <h2>¿Nombre de la empresa?</h2>
+
+                    <input type="text" name="nombre" placeholder="Ej. Comercial XYZ" required>
+
+                    <select name="area" required>
+                        <option value="">Área o servicio</option>
+                        <option>Ventas</option>
+                        <option>Logística</option>
+                        <option>Atención al Cliente</option>
+                        <option>Facturación</option>
+                        <option>Operación</option>
+                        <option>Producción</option>
+                    </select>
+
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <!-- STEP 2 -->
+                <section class="ux-step">
+                    <h2>¿Cómo fue nuestro servicio?</h2>
+
+                    <div class="rating">
+                        <label><input type="radio" name="satisfaccion" value="1" required> Malo</label>
+                        <label><input type="radio" name="satisfaccion" value="2"> Regular</label>
+                        <label><input type="radio" name="satisfaccion" value="3"> Bueno</label>
+                        <label><input type="radio" name="satisfaccion" value="4"> Muy bueno</label>
+                        <label><input type="radio" name="satisfaccion" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <!-- STEP 3 -->
+                <section class="ux-step">
+                    <h2>¿Cómo fue el trato del personal?</h2>
+
+                    <div class="rating">
+                        <label><input type="radio" name="trato" value="1" required> Malo</label>
+                        <label><input type="radio" name="trato" value="2"> Regular</label>
+                        <label><input type="radio" name="trato" value="3"> Bueno</label>
+                        <label><input type="radio" name="trato" value="4"> Muy bueno</label>
+                        <label><input type="radio" name="trato" value="5"> Excelente</label>
+                    </div>
+
+                    <button type="button" class="next">Continuar</button>
+                </section>
+                
+                <!-- STEP 4 -->
+
+                    <section class="ux-step">
+                    <h2>¿Cómo fue el trato del personal?</h2>
+
+                    <div class="rating">
+                        <label><input type="radio" name="trato" value="1" required> Malo</label>
+                        <label><input type="radio" name="trato" value="2"> Regular</label>
+                        <label><input type="radio" name="trato" value="3"> Bueno</label>
+                        <label><input type="radio" name="trato" value="4"> Muy bueno</label>
+                        <label><input type="radio" name="trato" value="5"> Excelente</label>
+                    </div>
+
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <!-- STEP 5 -->  
+                <section class="ux-step">
+                    <h2>¿Algún comentario final?</h2>
+
+                    <textarea name="comentarios" placeholder="Escribe aquí..." rows="4"></textarea>
+
+                    <button type="submit">Enviar encuesta</button>
+                </section>
+            </form>
+        </div>
+
+
+    </div>
+
+    <!-- LOADING -->
+    <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
+        <div class="spinner">
+            <!-- Huevo SVG rodando -->
+            <svg class="egg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g>
+                    <ellipse class="egg-shadow" cx="60" cy="62" rx="28" ry="6" fill="rgba(0,0,0,0.06)" />
+                    <ellipse class="egg-body" cx="60" cy="38" rx="26" ry="34" fill="#fffbe6" stroke="#f3e2a6" />
+                    <ellipse class="egg-highlight" cx="72" cy="26" rx="6" ry="10" fill="#ffffff" opacity="0.95" />
+                </g>
+            </svg>
+        </div>
+        <div class="loading-text">Enviando encuesta...</div>
+    </div>
+
+    <!-- CONFIRM -->
+    <div id="confirmMessage" class="confirm-message" role="status" aria-live="polite" aria-hidden="true">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="11" stroke="#2ecc71" stroke-width="2" fill="rgba(46,204,113,0.08)" />
+            <path d="M6.5 12.5L10 16l7-8" stroke="#2ecc71" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        <div class="confirm-text">
+            Gracias por tu opinión
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        /* ===========================
+           UX CAROUSEL
+        =========================== */
+        const steps = document.querySelectorAll('.ux-step');
+        const indicators = document.querySelectorAll('.step');
+        let currentStep = 0;
+
+        function updateSteps() {
+            steps.forEach((step, i) => {
+                step.classList.toggle('active', i === currentStep);
+                indicators[i].classList.toggle('active', i <= currentStep);
+            });
+        }
+
+        document.addEventListener('click', e => {
+            if (!e.target.classList.contains('next')) return;
+
+            const requiredField = steps[currentStep].querySelector('input, select');
+            if (requiredField && !requiredField.checkValidity()) {
+                requiredField.reportValidity();
+                return;
+            }
+
+            currentStep++;
+            updateSteps();
+        });
+
+        /* ===========================
+           FORM SUBMIT
+        =========================== */
+        const form = document.getElementById('encuestaForm');
+        const loading = document.getElementById('loadingOverlay');
+        const confirm = document.getElementById('confirmMessage');
+        const egg = document.querySelector('.egg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            // mostrar overlay y reiniciar animación del huevo
+            loading.style.display = 'flex';
+            if (egg) {
+                egg.classList.remove('run');
+                void egg.offsetWidth; // forzar reflow para reiniciar animación
+                egg.classList.add('run');
+            }
+
+            fetch(
+                'https://script.google.com/macros/s/AKfycbybbKITqAGmX1lOqYF6b1gyaFylfPH6M1LLuWIEBsl7TTECN3dad5tnVIZGI5HpshMdjQ/exec',
+                {
+                    method: 'POST',
+                    body: new FormData(form)
+                }
+            )
+                .then(() => {
+                    form.reset();
+                    loading.style.display = 'none';
+                    if (egg) egg.classList.remove('run');
+                    confirm.classList.add('show');
+
+                    setTimeout(() => {
+                        confirm.classList.remove('show');
+                        currentStep = 0;
+                        updateSteps();
+                    }, 6000);
+                })
+                .catch(() => {
+                    loading.style.display = 'none';
+                    alert('Error al enviar la encuesta');
+                });
+        });
+    </script>
+
+</body>
+
+</html>
