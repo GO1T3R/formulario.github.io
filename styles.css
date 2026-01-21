@@ -100,3 +100,53 @@ footer {
     font-size: 12px;
     color: #888;
 }
+
+/* (Se eliminó modal de login; sólo se mantiene el loader) */
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255,255,255,0.7);
+    z-index: 1100;
+}
+.spinner {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 5px solid rgba(0,0,0,0.08);
+    border-top-color: #b11226;
+    animation: spin 1s linear infinite;
+}
+.loading-text {
+    color: #333;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Button states */
+.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.primary {
+    background: #b11226;
+    color: #fff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 420px) {
+    .container { margin: 20px; padding: 20px; }
+    .container { margin: 20px; padding: 20px; }
+}

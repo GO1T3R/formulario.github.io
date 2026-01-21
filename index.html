@@ -66,26 +66,51 @@
         © 2026 Corporativo Avícola del Caribe
     </footer>
 </div>
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
+    <div class="spinner"></div>
+    <div class="loading-text">Enviando encuesta...</div>
+</div>
+
 <script>
 const form = document.getElementById("encuestaForm");
+const submitButton = form.querySelector('button[type="submit"]');
+const loadingOverlay = document.getElementById('loadingOverlay');
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault(); 
+function showLoading() {
+    loadingOverlay.style.display = 'flex';
+    loadingOverlay.setAttribute('aria-hidden', 'false');
+    submitButton.disabled = true;
+    submitButton.classList.add('disabled');
+}
+
+function hideLoading() {
+    loadingOverlay.style.display = 'none';
+    loadingOverlay.setAttribute('aria-hidden', 'true');
+    submitButton.disabled = false;
+    submitButton.classList.remove('disabled');
+}
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    showLoading();
 
     const formData = new FormData(form);
 
-    fetch("https://script.google.com/macros/s/AKfycbybbKITqAGmX1lOqYF6b1gyaFylfPH6M1LLuWIEBsl7TTECN3dad5tnVIZGI5HpshMdjQ/exec", {
-        method: "POST",
+    fetch('https://script.google.com/macros/s/AKfycbybbKITqAGmX1lOqYF6b1gyaFylfPH6M1LLuWIEBsl7TTECN3dad5tnVIZGI5HpshMdjQ/exec', {
+        method: 'POST',
         body: formData
     })
     .then(response => response.text())
     .then(data => {
-        alert("Gracias por tu respuesta");
         form.reset();
     })
     .catch(error => {
-        alert("Error al enviar la encuesta");
+        alert('Error al enviar la encuesta');
         console.error(error);
+    })
+    .finally(() => {
+        hideLoading();
     });
 });
 </script>
