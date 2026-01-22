@@ -1,210 +1,267 @@
+:root {
+  --bg: #fbfbfb;
+  --card: #ffffff;
+  --muted: #9aa3a6;
+  --accent: #042940;
+  --radius: 10px;
+}
 
-body {
-  background: #f4f6f8;
-  font-family: 'Segoe UI', sans-serif;
+html {
+  background: var(--bg);
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.header>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box
+}
+
+.logo {
+  max-width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin: 0;
+  background: var(--bg);
+  color: #0b1a1a;
 }
 
 .ux-card {
   max-width: 420px;
-  margin: 60px auto;
-  background: white;
-  padding: 32px;
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  margin: 48px auto;
+  background: var(--card);
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(11, 91, 91, 0.06);
+  box-shadow: none;
 }
 
-/* Header: logo + title */
+/* Header */
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: 28px auto 8px;
-  max-width: 520px;
-  padding: 0 16px;
-}
-.header > div { text-align: center; }
-.logo {
-  display: block;
-  max-width: 200px;
-  height: auto;
-  margin: 0 auto; /* centra la imagen dentro del contenedor */
+  gap: 8px;
+  margin-bottom: 18px
 }
 
-/* Progress */
+.logo {
+  max-width: 140px;
+  height: auto;
+  display: block
+}
+
+.header h1 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+  color: #061b1b
+}
+
+/* Progress: thin, minimal */
 .progress {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  gap: 8px;
+  margin: 18px 0
 }
 
 .step {
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #ddd;
-  color: white;
-  font-size: 13px;
+  background: transparent;
+  border: 1px solid #e6e9ea;
+  color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px
 }
 
 .step.active {
-  background: #042940;
+  background: var(--accent);
+  border-color: transparent
 }
 
 .line {
   flex: 1;
-  height: 2px;
-  background: #ddd;
+  height: 1px;
+  background: #e6e9ea
 }
 
-/* Steps */
+/* Steps visibility */
 .ux-step {
-  display: none;
-  animation: fade 0.4s ease;
+  display: none
 }
 
 .ux-step.active {
-  display: block;
+  display: block
 }
 
 @keyframes fade {
-  from { opacity: 0; transform: translateX(15px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
 }
 
 h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin: 10px 0 18px;
+  font-weight: 600;
+  color: #061b1b
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
-  border: none;
-  border-bottom: 2px solid #ddd;
-  padding: 10px 5px;
-  font-size: 15px;
-  margin-bottom: 20px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ea;
+  background: transparent;
+  font-size: 14px;
+  color: inherit;
+  margin-bottom: 14px
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  border-color: #042940;
+  box-shadow: 0 0 0 4px rgba(11, 91, 91, 0.04);
+  border-color: var(--accent)
 }
 
-section label:first-of-type {
-  text-align: center;
-  font-size: 15px;
-  margin: 0 0 12px 0;
+.pregunta {
   display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--accent)
 }
+
 .rating {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;      /* centra verticalmente los elementos dentro de cada fila */
-  justify-content: center;  /* centra horizontalmente las filas */
-  margin-bottom: 12px;
-}
-.rating label {
-  display: flex;            /* usa flex para centrar mejor el contenido */
-  align-items: center;      /* centra verticalmente el texto y el input */
-  justify-content: center;  /* centra horizontalmente el contenido dentro de la etiqueta */
   gap: 8px;
-  padding: 8px 12px;
-  min-height: 44px;         /* asegura una altura consistente para alineación */
-  box-sizing: border-box;
-  border-radius: 8px;
-  background: rgba(4,41,64,0.04);
-  cursor: pointer;
-  border: 1px solid transparent;
-  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 14px
 }
+
+.rating label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #f0f3f3;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px
+}
+
 .rating input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  margin: 0;                /* elimina márgenes que rompan el centrado */
-  flex: 0 0 auto;           /* evita que el input estire */
+  width: 16px;
+  height: 16px;
+  margin: 0
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background: #042940;
-  color: white;
-  border: none;
   border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
+  border: 1px solid rgba(11, 91, 91, 0.12);
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer
 }
 
-@media (max-width: 480px) {
-  .header { gap: 10px; margin-top: 18px; }
-  .logo { max-width: auto; }
-  h2 { font-size: 18px; }
-  /* en móvil, las opciones vuelven a columna y ocupan todo el ancho */
-  .rating { flex-direction: column; align-items: stretch; }
-  .rating label { width: 100%; justify-content: center; align-items: center; }
+button[disabled] {
+  opacity: 0.56;
+  cursor: not-allowed
 }
 
-/* Loading overlay and chicken animation */
+/* Loading overlay */
 .loading-overlay {
   position: fixed;
   inset: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  background: rgba(255,255,255,0.85);
-  z-index: 1200;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1200
 }
+
 .spinner {
-  width: 100%;
-  height: 140px;
-  position: relative;
-  display: block;
-  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
+
 .egg {
-  width: 160px;
-  height: auto;
-  position: absolute;
-  left: 0;
-  top: 55%;
-  transform: translate(-30vw, -50%) rotate(0deg);
-}
-.egg g { transform-origin: 50% 50%; }
-
-/* Sólo cuando tenga la clase .run la animación se ejecuta; esto permite reiniciarla vía JS */
-.egg.run {
-  animation: runAcross 5s linear forwards;
+  width: 120px
 }
 
-@keyframes runAcross {
-  0% { transform: translate(-30vw, -50%) rotate(0deg); }
-  100% { transform: translate(125vw, -50%) rotate(1080deg); }
+.loading-text {
+  color: var(--muted);
+  font-weight: 600
 }
-
-.loading-text { color: #333; font-weight: 600; }
 
 /* Confirm message */
 .confirm-message {
   display: none;
   position: fixed;
   left: 50%;
-  top: 24%;
+  top: 20%;
   transform: translateX(-50%);
-  background: #f6fff7;
-  border: 1px solid rgba(46,204,113,0.15);
-  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid rgba(11, 91, 91, 0.06);
+  padding: 12px 16px;
   border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  align-items: center;
-  gap: 10px;
-  z-index: 1300;
+  z-index: 1300
 }
-.confirm-message.show { display: flex; }
-.confirm-text { font-weight: 700; color: #2b7a3a; }
+
+.confirm-message.show {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.confirm-text {
+  font-weight: 700;
+  color: var(--accent)
+}
+
+@media (max-width:480px) {
+  .ux-card {
+    margin: 20px;
+    padding: 18px
+  }
+
+  .rating {
+    flex-direction: column;
+    align-items: stretch
+  }
+
+  .rating label {
+    width: 100%;
+    justify-content: flex-start
+  }
+}
