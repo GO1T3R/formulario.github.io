@@ -126,13 +126,8 @@ form.addEventListener('submit', e => {
             form.reset();
             loading.style.display = 'none';
             if (egg) egg.classList.remove('run');
+            // Mostrar confirmación en overlay y mantener hasta cierre manual
             confirm.classList.add('show');
-
-            setTimeout(() => {
-                confirm.classList.remove('show');
-                currentStep = 0;
-                updateSteps();
-            }, 6000);
         })
         .catch(() => {
             loading.style.display = 'none';
@@ -140,6 +135,15 @@ form.addEventListener('submit', e => {
         });
 
 });
+    // Cerrar confirmación manualmente
+    const confirmClose = document.querySelector('.confirm-close');
+    if (confirmClose) {
+        confirmClose.addEventListener('click', () => {
+            confirm.classList.remove('show');
+            currentStep = 0;
+            updateSteps();
+        });
+    }
 // NO uses .then(res => res.json())
 // NO uses .catch()
 // En no-cors no hay respuesta legible
