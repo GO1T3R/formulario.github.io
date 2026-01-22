@@ -167,8 +167,8 @@
                 <section class="ux-step" data-area="Atencion">
                     <label class="pregunta">¿Su factura fue entregada correctamente y sin errores?</label>
                     <div class="rating">
-                        <label><input type="radio" name="ac_factura" value="si"> No</label>
-                        <label><input type="radio" name="ac_factura" value="no"> Si</label>
+                        <label><input type="radio" name="ac_factura" value="no"> No</label>
+                        <label><input type="radio" name="ac_factura" value="si"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -212,9 +212,9 @@
                 <section class="ux-step" data-area="Calidad">
                     <label class="pregunta">¿El producto cumple con sus expectativas?</label>
                     <div class="rating">
-                        <label><input type="radio" name="cal_expectativa" value="si"> Sí</label>
-                        <label><input type="radio" name="cal_expectativa" value="parcial"> Parcialmente</label>
                         <label><input type="radio" name="cal_expectativa" value="no"> No</label>
+                        <label><input type="radio" name="cal_expectativa" value="parcial"> Parcialmente</label>
+                        <label><input type="radio" name="cal_expectativa" value="si"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -258,43 +258,19 @@
     <!-- LOADING -->
     <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
         <div class="spinner">
-            <!-- Gallina SVG corriendo (mantiene clase "egg" para compatibilidad con scripts) -->
-            <svg class="egg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <g>
-                    <!-- sombra -->
-                    <ellipse class="egg-shadow" cx="60" cy="66" rx="28" ry="6" fill="rgba(0,0,0,0.06)" />
-                    <!-- cuerpo -->
-                    <ellipse class="body" cx="52" cy="38" rx="28" ry="18" fill="#f6d6a8" stroke="#d79b5a" />
-                    <!-- ala -->
-                    <path class="wing" d="M48 30 q12 -8 24 2 q-8 10 -24 6" fill="#f3b878" />
-                    <!-- cabeza y pico -->
-                    <circle class="head" cx="86" cy="30" r="8" fill="#f6d6a8" stroke="#d79b5a" />
-                    <polygon class="beak" points="94,30 100,27 100,33" fill="#ffb84d" />
-                    <circle cx="89" cy="28" r="1.2" fill="#222" />
-                    <!-- patas -->
-                    <g class="leg left">
-                        <rect x="52" y="54" width="3" height="10" fill="#d79b5a" />
-                        <path d="M54 64 l-6 6" stroke="#d79b5a" stroke-width="2" stroke-linecap="round" />
-                    </g>
-                    <g class="leg right">
-                        <rect x="64" y="54" width="3" height="10" fill="#d79b5a" />
-                        <path d="M66 64 l6 6" stroke="#d79b5a" stroke-width="2" stroke-linecap="round" />
-                    </g>
-                </g>
-            </svg>
+            <!-- GIF de carga centrado -->
+            <img class="loading-gif" src="/assets/cargando_huevo.gif" alt="Cargando...">
         </div>
-        <div class="loading-text">Enviando encuesta...</div>
     </div>
 
     <!-- CONFIRM -->
-    <div id="confirmMessage" class="confirm-message" role="status" aria-live="polite" aria-hidden="true">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="11" stroke="#2ecc71" stroke-width="2" fill="rgba(46,204,113,0.08)" />
-            <path d="M6.5 12.5L10 16l7-8" stroke="#2ecc71" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-        </svg>
-        <div class="confirm-text">
-            Gracias por tu opinión
+    <div id="confirmMessage" class="confirm-message" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="confirm-inner">
+            <button class="confirm-close" aria-label="Cerrar">×</button>
+            <img src="/assets/listo_huevo.gif" alt="Listo" class="confirm-gif">
+            <div class="confirm-text">
+                Gracias por tu opinión
+            </div>
         </div>
     </div>
 
