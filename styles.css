@@ -219,6 +219,34 @@ button[disabled] {
   width: 120px
 }
 
+/* permitir que la gallina salga del contenedor y animaciones */
+.spinner{overflow:visible}
+.egg{position:relative;transform-origin:50% 50%}
+.egg.run{animation:runAcross 3s linear forwards}
+
+@keyframes runAcross{
+  0%{transform:translateX(-30vw) rotate(0deg)}
+  100%{transform:translateX(130vw) rotate(720deg)}
+}
+
+/* alas y patas en movimiento solo mientras corre */
+.egg .wing{transform-origin:60px 30px}
+.egg .leg{transform-origin:58px 54px}
+.egg.run .wing{animation:flap 300ms linear infinite}
+.egg.run .leg{animation:runLegs 200ms linear infinite}
+
+@keyframes flap{
+  0%{transform:rotate(0deg)}
+  50%{transform:rotate(-20deg)}
+  100%{transform:rotate(0deg)}
+}
+
+@keyframes runLegs{
+  0%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(6px) rotate(12deg)}
+  100%{transform:translateY(0) rotate(0deg)}
+}
+
 .loading-text {
   color: var(--muted);
   font-weight: 600

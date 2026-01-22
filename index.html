@@ -258,12 +258,28 @@
     <!-- LOADING -->
     <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
         <div class="spinner">
-            <!-- Huevo SVG rodando -->
+            <!-- Gallina SVG corriendo (mantiene clase "egg" para compatibilidad con scripts) -->
             <svg class="egg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <g>
-                    <ellipse class="egg-shadow" cx="60" cy="62" rx="28" ry="6" fill="rgba(0,0,0,0.06)" />
-                    <ellipse class="egg-body" cx="60" cy="38" rx="26" ry="34" fill="#fffbe6" stroke="#f3e2a6" />
-                    <ellipse class="egg-highlight" cx="72" cy="26" rx="6" ry="10" fill="#ffffff" opacity="0.95" />
+                    <!-- sombra -->
+                    <ellipse class="egg-shadow" cx="60" cy="66" rx="28" ry="6" fill="rgba(0,0,0,0.06)" />
+                    <!-- cuerpo -->
+                    <ellipse class="body" cx="52" cy="38" rx="28" ry="18" fill="#f6d6a8" stroke="#d79b5a" />
+                    <!-- ala -->
+                    <path class="wing" d="M48 30 q12 -8 24 2 q-8 10 -24 6" fill="#f3b878" />
+                    <!-- cabeza y pico -->
+                    <circle class="head" cx="86" cy="30" r="8" fill="#f6d6a8" stroke="#d79b5a" />
+                    <polygon class="beak" points="94,30 100,27 100,33" fill="#ffb84d" />
+                    <circle cx="89" cy="28" r="1.2" fill="#222" />
+                    <!-- patas -->
+                    <g class="leg left">
+                        <rect x="52" y="54" width="3" height="10" fill="#d79b5a" />
+                        <path d="M54 64 l-6 6" stroke="#d79b5a" stroke-width="2" stroke-linecap="round" />
+                    </g>
+                    <g class="leg right">
+                        <rect x="64" y="54" width="3" height="10" fill="#d79b5a" />
+                        <path d="M66 64 l6 6" stroke="#d79b5a" stroke-width="2" stroke-linecap="round" />
+                    </g>
                 </g>
             </svg>
         </div>
