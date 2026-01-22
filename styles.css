@@ -28,6 +28,7 @@ body {
   display: block;
   max-width: 200px;
   height: auto;
+  margin: 0 auto; /* centra la imagen dentro del contenedor */
 }
 
 /* Progress */
@@ -97,23 +98,29 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: center;      /* centra verticalmente los elementos dentro de cada fila */
+  justify-content: center;  /* centra horizontalmente las filas */
   margin-bottom: 12px;
-  justify-content: center;
 }
 .rating label {
-  display: inline-flex;
-  align-items: center;
+  display: flex;            /* usa flex para centrar mejor el contenido */
+  align-items: center;      /* centra verticalmente el texto y el input */
+  justify-content: center;  /* centra horizontalmente el contenido dentro de la etiqueta */
   gap: 8px;
-  padding: 8px 10px;
+  padding: 8px 12px;
+  min-height: 44px;         /* asegura una altura consistente para alineación */
+  box-sizing: border-box;
   border-radius: 8px;
   background: rgba(4,41,64,0.04);
   cursor: pointer;
   border: 1px solid transparent;
+  text-align: center;
 }
 .rating input[type="radio"] {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  margin: 0;                /* elimina márgenes que rompan el centrado */
+  flex: 0 0 auto;           /* evita que el input estire */
 }
 
 button {
@@ -133,7 +140,7 @@ button {
   h2 { font-size: 18px; }
   /* en móvil, las opciones vuelven a columna y ocupan todo el ancho */
   .rating { flex-direction: column; align-items: stretch; }
-  .rating label { width: 100%; justify-content: center; }
+  .rating label { width: 100%; justify-content: center; align-items: center; }
 }
 
 /* Loading overlay and chicken animation */

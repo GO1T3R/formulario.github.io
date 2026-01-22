@@ -17,8 +17,8 @@
         <div class="ux-card">
 
             <header class="header">
-                <img src="assets/CADC.png" alt="Logo Corporativo Avícola del Caribe" class="logo">
                 <div>
+                    <img src="assets/CADC.png" alt="Logo Corporativo Avícola del Caribe" class="logo">
                     <h1>Encuesta de Satisfacción</h1>
                     <p class="subtitle">Corporativo Avícola del Caribe agradece tu opinión</p>
                 </div>
@@ -41,75 +41,214 @@
             <form id="encuestaForm">
 
                 <!-- STEP 1 -->
-                <section class="ux-step active">
+                <section class="ux-step active" data-area="all">
                     <h2>¿Nombre de la empresa?</h2>
 
-                    <input type="text" name="nombre" placeholder="Ej. Comercial XYZ" required>
+                    <input type="text" name="nombre" placeholder="Ej. Hotel Cancun" required>
 
-                    <select name="area" required>
-                        <option value="">Área o servicio</option>
-                        <option>Ventas</option>
-                        <option>Logística</option>
-                        <option>Atención al Cliente</option>
-                        <option>Facturación</option>
-                        <option>Operación</option>
-                        <option>Producción</option>
+                    <select name="empresa" required>
+                        <option value="">Empresa a evaluar</option>
+                        <option>Corporativo</option>
+                        <option>Le King Poulet</option>
+                        <option>Guillegg</option>
                     </select>
 
+                    <select id="areaSelect" name="area" required>
+                        <option value="">Selecciona un área</option>
+                        <option value="Operacion">Operación – Logística</option>
+                        <option value="Atencion">Atención al Cliente</option>
+                        <option value="Calidad">Calidad</option>
+                    </select>
+
+
                     <button type="button" class="next">Continuar</button>
                 </section>
 
-                <!-- STEP 2 -->
-                <section class="ux-step">
-                    <h2>¿Cómo fue nuestro servicio?</h2>
+                <!--Operaciones-->
+                <section class="ux-step" data-area="Operacion">
 
+
+                    <!-- Pregunta 1 -->
+                    <label>¿El tiempo de entrega de su pedido fue adecuado?</label>
                     <div class="rating">
-                        <label><input type="radio" name="satisfaccion" value="1" required> Malo</label>
-                        <label><input type="radio" name="satisfaccion" value="2"> Regular</label>
-                        <label><input type="radio" name="satisfaccion" value="3"> Bueno</label>
-                        <label><input type="radio" name="satisfaccion" value="4"> Muy bueno</label>
-                        <label><input type="radio" name="satisfaccion" value="5"> Excelente</label>
+                        <label><input type="radio" name="op_tiempo_entrega" value="1"> Muy malo</label>
+                        <label><input type="radio" name="op_tiempo_entrega" value="2"> Malo</label>
+                        <label><input type="radio" name="op_tiempo_entrega" value="3"> Regular</label>
+                        <label><input type="radio" name="op_tiempo_entrega" value="4"> Bueno</label>
+                        <label><input type="radio" name="op_tiempo_entrega" value="5"> Excelente</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
 
-                <!-- STEP 3 -->
-                <section class="ux-step">
-                    <h2>¿Cómo fue el trato del personal?</h2>
-
+                <section class="ux-step" data-area="Operacion">
+                    <!-- Pregunta 2 -->
+                    <label>¿Recibió su pedido completo y sin errores?</label>
                     <div class="rating">
-                        <label><input type="radio" name="trato" value="1" required> Malo</label>
-                        <label><input type="radio" name="trato" value="2"> Regular</label>
-                        <label><input type="radio" name="trato" value="3"> Bueno</label>
-                        <label><input type="radio" name="trato" value="4"> Muy bueno</label>
-                        <label><input type="radio" name="trato" value="5"> Excelente</label>
+                        <label><input type="radio" name="op_pedido_completo" value="si"> Sí</label>
+                        <label><input type="radio" name="op_pedido_completo" value="no"> No</label>
                     </div>
-
                     <button type="button" class="next">Continuar</button>
                 </section>
 
-                <!-- STEP 4 -->
-
-                <section class="ux-step">
-                    <h2>¿Recomendaria usted a Corporativo Avicola del Caribe?</h2>
-
+                <section class="ux-step" data-area="Operacion">
+                    <!-- Pregunta 3 -->
+                    <label>¿Como califica el estado del producto al momento de la entrega?</label>
                     <div class="rating">
-                        <label><input type="radio" name="trato" value="1" required>Si</label>
-                        <label><input type="radio" name="trato" value="2">No</label>
-                        <label><input type="radio" name="trato" value="3" required>Tal vez</label>
+                        <label><input type="radio" name="op_estado_producto" value="1"> Muy malo</label>
+                        <label><input type="radio" name="op_estado_producto" value="2"> Malo</label>
+                        <label><input type="radio" name="op_estado_producto" value="3"> Regular</label>
+                        <label><input type="radio" name="op_estado_producto" value="4"> Bueno</label>
+                        <label><input type="radio" name="op_estado_producto" value="5"> Excelente</label>
                     </div>
-
                     <button type="button" class="next">Continuar</button>
                 </section>
 
-                <!-- STEP 5 -->
-                <section class="ux-step">
+                <section class="ux-step" data-area="Operacion">
+                    <!-- Pregunta 4 -->
+                    <label>¿La informacion sobre su entrega fue clara y oportuna?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="op_info_entrega" value="1"> Muy malo</label>
+                        <label><input type="radio" name="op_info_entrega" value="2"> Malo</label>
+                        <label><input type="radio" name="op_info_entrega" value="3"> Regular</label>
+                        <label><input type="radio" name="op_info_entrega" value="4"> Bueno</label>
+                        <label><input type="radio" name="op_info_entrega" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Operacion">
                     <h2>¿Algún comentario final?</h2>
 
                     <textarea name="comentarios" placeholder="Escribe aquí..." rows="4"></textarea>
 
                     <button type="submit">Enviar encuesta</button>
                 </section>
+
+                <!--Atencion al cliente-->
+                <section class="ux-step" data-area="Atencion">
+
+
+                    <label>¿El personal de ventas atendió sus solicitudes de manera clara y cordial?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="ac_trato" value="1"> Muy malo</label>
+                        <label><input type="radio" name="ac_trato" value="2"> Malo</label>
+                        <label><input type="radio" name="ac_trato" value="3"> Regular</label>
+                        <label><input type="radio" name="ac_trato" value="4"> Bueno</label>
+                        <label><input type="radio" name="ac_trato" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Atencion">
+                    <label>¿Recibió cotizaciones o información comercial en tiempo adecuado?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="ac_tiempo_info" value="1"> Muy tarde</label>
+                        <label><input type="radio" name="ac_tiempo_info" value="2"> Tarde</label>
+                        <label><input type="radio" name="ac_tiempo_info" value="3"> A tiempo</label>
+                        <label><input type="radio" name="ac_tiempo_info" value="4"> Rápido</label>
+                        <label><input type="radio" name="ac_tiempo_info" value="5"> Muy rápido</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Atencion">
+                    <label>¿El personal de atención al cliente resolvió sus dudas o inconvenientes de manera
+                        efectiva?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="ac_resolucion" value="1"> Muy mala</label>
+                        <label><input type="radio" name="ac_resolucion" value="2"> Mala</label>
+                        <label><input type="radio" name="ac_resolucion" value="3"> Regular</label>
+                        <label><input type="radio" name="ac_resolucion" value="4"> Buena</label>
+                        <label><input type="radio" name="ac_resolucion" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Atencion">
+                    <label>¿Su factura fue entregada correctamente y sin errores?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="ac_factura" value="si"> Sí</label>
+                        <label><input type="radio" name="ac_factura" value="no"> No</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+
+                <section class="ux-step" data-area="Atencion">
+                    <label>¿Qué tan satisfecho está con la atención recibida en general?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="ac_satisfaccion" value="1"> Nada satisfecho</label>
+                        <label><input type="radio" name="ac_satisfaccion" value="2"> Poco satisfecho</label>
+                        <label><input type="radio" name="ac_satisfaccion" value="3"> Satisfecho</label>
+                        <label><input type="radio" name="ac_satisfaccion" value="4"> Muy satisfecho</label>
+                        <label><input type="radio" name="ac_satisfaccion" value="5"> Totalmente satisfecho</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+
+                <section class="ux-step" data-area="Atencion">
+                    <h2>¿Algún comentario final?</h2>
+
+                    <textarea name="comentarios" placeholder="Escribe aquí..." rows="4"></textarea>
+
+                    <button type="submit">Enviar encuesta</button>
+                </section>
+
+                <!--Calidad-->
+                <section class="ux-step" data-area="Calidad">
+
+                    <label>¿Cómo califica la calidad del producto recibido?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_producto" value="1"> Muy mala</label>
+                        <label><input type="radio" name="cal_producto" value="2"> Mala</label>
+                        <label><input type="radio" name="cal_producto" value="3"> Regular</label>
+                        <label><input type="radio" name="cal_producto" value="4"> Buena</label>
+                        <label><input type="radio" name="cal_producto" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Calidad">
+                    <label>¿El producto cumple con sus expectativas?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_expectativa" value="si"> Sí</label>
+                        <label><input type="radio" name="cal_expectativa" value="parcial"> Parcialmente</label>
+                        <label><input type="radio" name="cal_expectativa" value="no"> No</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Calidad">
+                    <label>¿Ha presentado problemas de calidad recientemente?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_problemas" value="no"> No</label>
+                        <label><input type="radio" name="cal_problemas" value="pocos"> Sí, pocos</label>
+                        <label><input type="radio" name="cal_problemas" value="frecuentes"> Sí, frecuentes</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Calidad">
+                    <label>¿Qué tan confiable considera nuestro servicio en general?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_confiable" value="1"> Nada confiable</label>
+                        <label><input type="radio" name="cal_confiable" value="2"> Poco confiable</label>
+                        <label><input type="radio" name="cal_confiable" value="3"> Confiable</label>
+                        <label><input type="radio" name="cal_confiable" value="4"> Muy confiable</label>
+                        <label><input type="radio" name="cal_confiable" value="5"> Totalmente confiable</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+                <section class="ux-step" data-area="Calidad">
+                    <h2>¿Algún comentario final?</h2>
+
+                    <textarea name="comentarios" placeholder="Escribe aquí..." rows="4"></textarea>
+
+                    <button type="submit">Enviar encuesta</button>
+                </section>
+
+
             </form>
         </div>
 
@@ -143,79 +282,8 @@
         </div>
     </div>
 
-    <!-- SCRIPT -->
-    <script>
-        /* ===========================
-           UX CAROUSEL
-        =========================== */
-        const steps = document.querySelectorAll('.ux-step');
-        const indicators = document.querySelectorAll('.step');
-        let currentStep = 0;
 
-        function updateSteps() {
-            steps.forEach((step, i) => {
-                step.classList.toggle('active', i === currentStep);
-                indicators[i].classList.toggle('active', i <= currentStep);
-            });
-        }
-
-        document.addEventListener('click', e => {
-            if (!e.target.classList.contains('next')) return;
-
-            const requiredField = steps[currentStep].querySelector('input, select');
-            if (requiredField && !requiredField.checkValidity()) {
-                requiredField.reportValidity();
-                return;
-            }
-
-            currentStep++;
-            updateSteps();
-        });
-
-        /* ===========================
-           FORM SUBMIT
-        =========================== */
-        const form = document.getElementById('encuestaForm');
-        const loading = document.getElementById('loadingOverlay');
-        const confirm = document.getElementById('confirmMessage');
-        const egg = document.querySelector('.egg');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            // mostrar overlay y reiniciar animación del huevo
-            loading.style.display = 'flex';
-            if (egg) {
-                egg.classList.remove('run');
-                void egg.offsetWidth; // forzar reflow para reiniciar animación
-                egg.classList.add('run');
-            }
-
-            fetch(
-                'https://script.google.com/macros/s/AKfycbybbKITqAGmX1lOqYF6b1gyaFylfPH6M1LLuWIEBsl7TTECN3dad5tnVIZGI5HpshMdjQ/exec',
-                {
-                    method: 'POST',
-                    body: new FormData(form)
-                }
-            )
-                .then(() => {
-                    form.reset();
-                    loading.style.display = 'none';
-                    if (egg) egg.classList.remove('run');
-                    confirm.classList.add('show');
-
-                    setTimeout(() => {
-                        confirm.classList.remove('show');
-                        currentStep = 0;
-                        updateSteps();
-                    }, 6000);
-                })
-                .catch(() => {
-                    loading.style.display = 'none';
-                    alert('Error al enviar la encuesta');
-                });
-        });
-    </script>
-
+    <script src="/scripts.js"></script>
 </body>
 
 </html>
