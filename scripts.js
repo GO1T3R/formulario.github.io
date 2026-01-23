@@ -104,6 +104,41 @@ const form = document.getElementById('encuestaForm');
 const loading = document.getElementById('loadingOverlay');
 const confirm = document.getElementById('confirmMessage');
 const egg = document.querySelector('.egg');
+const loadingImg = document.getElementById('loadingImg');
+const confirmImg = document.getElementById('confirmImg');
+const companySelect = document.querySelector('select[name="empresa"]');
+
+function setGifsForCompany(company) {
+    if (!company) company = '';
+    const key = company.toString().toLowerCase();
+    // Map company -> {loading, confirm} using option values
+    if (key === 'le_king_poulet') {
+        if (loadingImg) loadingImg.src = 'https://iili.io/f4gv9Pp.gif'; // Le King Poulet cargando
+        if (confirmImg) confirmImg.src = 'https://iili.io/f4gvXOg.gif'; // Le King Poulet adios
+    } else if (key === 'guillegg') {
+        if (loadingImg) loadingImg.src = 'https://iili.io/f4gwWrX.gif'; // Guillegg cargando
+        if (confirmImg) confirmImg.src = 'https://iili.io/f4gOTUF.gif'; // Guillegg adios
+    } else if (key === 'corporativo') {
+        if (loadingImg) loadingImg.src = 'https://iili.io/f4gyK4S.gif'; // Corporativo cargando
+        if (confirmImg) confirmImg.src = 'https://iili.io/f4iS0IS.gif'; // Corporativo adios
+    } else {
+        // default: huevo
+        if (loadingImg) loadingImg.src = '/assets/cargando_huevo.gif';
+        if (confirmImg) confirmImg.src = '/assets/listo_huevo.gif';
+    }
+}
+
+// update GIFs when the user selects a company
+if (companySelect) {
+    companySelect.addEventListener('change', (e) => {
+        setGifsForCompany(e.target.value);
+    });
+    // init on load based on current value
+    setGifsForCompany(companySelect.value);
+} else {
+    // fallback init
+    setGifsForCompany();
+}
 
 form.addEventListener('submit', e => {
     e.preventDefault();

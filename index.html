@@ -47,9 +47,9 @@
 
                     <select name="empresa" required>
                         <option value="">Empresa a evaluar</option>
-                        <option>Corporativo</option>
-                        <option>Le King Poulet</option>
-                        <option>Guillegg</option>
+                        <option value="corporativo">Corporativo</option>
+                        <option value="le_king_poulet">Le King Poulet</option>
+                        <option value="guillegg">Guillegg</option>
                     </select>
 
                     <select id="areaSelect" name="area" required>
@@ -257,7 +257,7 @@
     <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
         <div class="spinner">
             <!-- GIF de carga centrado -->
-            <img class="loading-gif" src="/assets/guillegg_cargando.gif" alt="Cargando...">
+            <img id="loadingImg" class="loading-gif" src="/assets/guillegg_cargando.gif" alt="Cargando...">
         </div>
     </div>
 
@@ -265,7 +265,7 @@
     <div id="confirmMessage" class="confirm-message" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="confirm-inner">
             <button class="confirm-close" aria-label="Cerrar">×</button>
-            <img src="/assets/guillegg_adios.gif" alt="Listo" class="confirm-gif">
+            <img id="confirmImg" src="/assets/guillegg_adios.gif" alt="Listo" class="confirm-gif">
             <div class="confirm-text">
                 Gracias por tu opinión
             </div>

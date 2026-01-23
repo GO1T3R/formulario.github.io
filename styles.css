@@ -325,7 +325,7 @@ button[disabled] {
   width: min(86vw, 1200px);
   height: auto;
   display: block;
-  max-height: 50vh;
+  max-height: 30vh;
   object-fit: contain;
 }
 
