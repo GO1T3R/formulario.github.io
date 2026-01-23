@@ -117,7 +117,7 @@ function setGifsForCompany(company) {
         if (confirmImg) confirmImg.src = 'https://iili.io/f4gvXOg.gif'; // Le King Poulet adios
     } else if (key === 'guillegg') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gwWrX.gif'; // Guillegg cargando
-        if (confirmImg) confirmImg.src = 'https://iili.io/f4gOTUF.gif'; // Guillegg adios
+        if (confirmImg) confirmImg.src = 'assets/huevito_gracias.png'; // Guillegg adios https://iili.io/f4gOTUF.gif
     } else if (key === 'corporativo') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gyK4S.gif'; // Corporativo cargando
         if (confirmImg) confirmImg.src = 'https://iili.io/f4iS0IS.gif'; // Corporativo adios
@@ -138,6 +138,53 @@ if (companySelect) {
 } else {
     // fallback init
     setGifsForCompany();
+}
+
+/* ===========================
+   CONFETTI (simple, no deps)
+   - launchConfetti(count): crea piezas de confeti con estilos aleatorios
+   - clearConfetti(): remueve piezas y limpia timeouts
+=========================== */
+const _confettiTimeouts = new Set();
+function launchConfetti(count = 80) {
+    const colors = ['#FF7A7A', '#FFD96B', '#9EE493', '#7AD3FF', '#D39EFF', '#FFAB66'];
+    const maxDuration = 3500; // ms
+
+    for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        const left = Math.random() * 100; // percent
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const rotate = Math.floor(Math.random() * 360);
+        const dur = 1500 + Math.random() * (maxDuration - 1500); // 1.5s - max
+        const delay = Math.random() * 300; // small stagger
+
+        el.style.left = left + 'vw';
+        el.style.background = color;
+        el.style.transform = `rotate(${rotate}deg)`;
+        el.style.animationDuration = dur + 'ms';
+        el.style.animationDelay = delay + 'ms';
+
+        document.body.appendChild(el);
+
+        // programar limpieza individual
+        const to = setTimeout(() => {
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+            _confettiTimeouts.delete(to);
+        }, dur + delay + 400);
+
+        _confettiTimeouts.add(to);
+    }
+}
+
+function clearConfetti() {
+    // clear timeouts
+    for (const t of Array.from(_confettiTimeouts)) {
+        clearTimeout(t);
+        _confettiTimeouts.delete(t);
+    }
+    // remove any remaining elements
+    document.querySelectorAll('.confetti-piece').forEach(el => el.remove());
 }
 
 form.addEventListener('submit', e => {
@@ -163,6 +210,8 @@ form.addEventListener('submit', e => {
             if (egg) egg.classList.remove('run');
             // Mostrar confirmación en overlay y mantener hasta cierre manual
             confirm.classList.add('show');
+            // lanzar confeti mientras la confirmación esté visible
+            try { launchConfetti(90); } catch (err) { /* no bloquear si falla */ }
         })
         .catch(() => {
             loading.style.display = 'none';
@@ -175,6 +224,8 @@ form.addEventListener('submit', e => {
     if (confirmClose) {
         confirmClose.addEventListener('click', () => {
             confirm.classList.remove('show');
+            // limpiar confeti activo
+            try { clearConfetti(); } catch (err) { /* ignore */ }
             currentStep = 0;
             updateSteps();
         });

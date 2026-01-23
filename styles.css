@@ -41,6 +41,30 @@ html {
   border-radius: var(--radius);
   border: 1px solid rgba(11, 91, 91, 0.06);
   box-shadow: none;
+  position: relative;
+  /* para posicionar las imágenes en las esquinas */
+  overflow: visible;
+}
+
+/* Imágenes posando (reglas globales) */
+.corner {
+  position: absolute;
+  width: 180px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.corner.left {
+  left: -180px;
+  top: 85%;
+  transform: translateY(-50%);
+}
+
+.corner.right {
+  right: -180px;
+  top: 85%;
+  transform: translateY(-50%);
 }
 
 /* Header */
@@ -363,6 +387,12 @@ button[disabled] {
     padding: 18px
   }
 
+  /* ocultar las imágenes decorativas en pantallas pequeñas */
+  .corner {
+    display: none
+  }
+
+
   .rating {
     flex-direction: column;
     align-items: stretch
@@ -371,5 +401,34 @@ button[disabled] {
   .rating label {
     width: 100%;
     justify-content: flex-start
+  }
+}
+
+/* Confetti pieces */
+.confetti-piece {
+  position: fixed;
+  top: -10vh;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1700;
+  opacity: 0.95;
+  will-change: transform, opacity;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+  transform: rotate(0deg);
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: 0.85;
   }
 }
