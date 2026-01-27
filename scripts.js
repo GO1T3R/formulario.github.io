@@ -103,6 +103,21 @@ if (areaSelect) {
 const form = document.getElementById('encuestaForm');
 const loading = document.getElementById('loadingOverlay');
 const confirm = document.getElementById('confirmMessage');
+const confirmTextEl = document.querySelector('.confirm-text');
+
+function activateConfirmMarker(autoShow = true) {
+    const el = document.querySelector('.confirm-text');
+    if (!el) return;
+    el.classList.add('marker');
+    if (autoShow) setTimeout(() => el.classList.add('show'), 60);
+}
+
+// activar efecto marcatexto al cargar la página (funciona si DOM ya está listo)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => activateConfirmMarker(true));
+} else {
+    activateConfirmMarker(true);
+}
 const egg = document.querySelector('.egg');
 const loadingImg = document.getElementById('loadingImg');
 const confirmImg = document.getElementById('confirmImg');
@@ -114,10 +129,10 @@ function setGifsForCompany(company) {
     // Map company -> {loading, confirm} using option values
     if (key === 'le_king_poulet') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gv9Pp.gif'; // Le King Poulet cargando
-        if (confirmImg) confirmImg.src = 'https://iili.io/f4gvXOg.gif'; // Le King Poulet adios
+        if (confirmImg) confirmImg.src = 'https://iili.io/f6cCUDN.md.jpg'; // Le King Poulet adios https://iili.io/f4gvXOg.gif
     } else if (key === 'guillegg') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gwWrX.gif'; // Guillegg cargando
-        if (confirmImg) confirmImg.src = 'assets/huevito_gracias.png'; // Guillegg adios https://iili.io/f4gOTUF.gif
+        if (confirmImg) confirmImg.src = 'https://iili.io/f6cKvZF.png'; // Guillegg adios https://iili.io/f4gOTUF.gif
     } else if (key === 'corporativo') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gyK4S.gif'; // Corporativo cargando
         if (confirmImg) confirmImg.src = 'https://iili.io/f4iS0IS.gif'; // Corporativo adios
@@ -210,6 +225,8 @@ form.addEventListener('submit', e => {
             if (egg) egg.classList.remove('run');
             // Mostrar confirmación en overlay y mantener hasta cierre manual
             confirm.classList.add('show');
+            // activar efecto marcatexto en el texto de confirmación
+            activateConfirmMarker(true);
             // lanzar confeti mientras la confirmación esté visible
             try { launchConfetti(90); } catch (err) { /* no bloquear si falla */ }
         })
@@ -226,6 +243,8 @@ form.addEventListener('submit', e => {
             confirm.classList.remove('show');
             // limpiar confeti activo
             try { clearConfetti(); } catch (err) { /* ignore */ }
+            // remover efecto marcatexto
+            if (confirmTextEl) confirmTextEl.classList.remove('show');
             currentStep = 0;
             updateSteps();
         });

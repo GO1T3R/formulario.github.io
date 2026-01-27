@@ -21,7 +21,7 @@
             <header class="header">
                 <div>
                     <img src="assets/CADC.png" alt="Logo Corporativo Avícola del Caribe" class="logo">
-                    <h1>Encuesta de Satisfacción</h1>
+                    <h1 class="marker show">Encuesta de Satisfacción</h1>
                 </div>
             </header>
 
@@ -85,8 +85,8 @@
                     <!-- Pregunta 2 -->
                     <label class="pregunta">¿Recibió su pedido completo y sin errores?</label>
                     <div class="rating">
-                        <label><input type="radio" name="op_pedido_completo" value="si"> No</label>
-                        <label><input type="radio" name="op_pedido_completo" value="no"> Si</label>
+                        <label><input type="radio" name="op_pedido_completo" value="0"> No</label>
+                        <label><input type="radio" name="op_pedido_completo" value="1"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -108,9 +108,9 @@
                     <!-- Pregunta 4 -->
                     <label class="pregunta">¿La informacion sobre su entrega fue clara y oportuna?</label>
                     <div class="rating">
-                        <label><input type="radio" name="op_info_entrega" value="no"> No</label>
-                        <label><input type="radio" name="op_info_entrega" value="confusa">Confusa</label>
-                        <label><input type="radio" name="op_info_entrega" value="si"> Si</label>
+                        <label><input type="radio" name="op_info_entrega" value="0"> No</label>
+                        <label><input type="radio" name="op_info_entrega" value=".5">Confusa</label>
+                        <label><input type="radio" name="op_info_entrega" value="1"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -167,8 +167,8 @@
                 <section class="ux-step" data-area="Atencion">
                     <label class="pregunta">¿Su factura fue entregada correctamente y sin errores?</label>
                     <div class="rating">
-                        <label><input type="radio" name="ac_factura" value="no"> No</label>
-                        <label><input type="radio" name="ac_factura" value="si"> Si</label>
+                        <label><input type="radio" name="ac_factura" value="0"> No</label>
+                        <label><input type="radio" name="ac_factura" value="1"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -212,9 +212,9 @@
                 <section class="ux-step" data-area="Calidad">
                     <label class="pregunta">¿El producto cumple con sus expectativas?</label>
                     <div class="rating">
-                        <label><input type="radio" name="cal_expectativa" value="no"> No</label>
-                        <label><input type="radio" name="cal_expectativa" value="parcial"> Parcialmente</label>
-                        <label><input type="radio" name="cal_expectativa" value="si"> Si</label>
+                        <label><input type="radio" name="cal_expectativa" value="0"> No</label>
+                        <label><input type="radio" name="cal_expectativa" value=".5"> Parcialmente</label>
+                        <label><input type="radio" name="cal_expectativa" value="1"> Si</label>
                     </div>
                     <button type="button" class="next">Continuar</button>
                 </section>
@@ -265,12 +265,9 @@
 
     <!-- CONFIRM -->
     <div id="confirmMessage" class="confirm-message" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="confirm-inner">
+            <div class="confirm-inner">
             <button class="confirm-close" aria-label="Cerrar">×</button>
             <img id="confirmImg" src="/assets/guillegg_adios.gif" alt="Listo" class="confirm-gif">
-            <div class="confirm-text">
-                Gracias por apoyarnos a mejorar, valoramos tu opinión.
-            </div>
         </div>
     </div>
 
