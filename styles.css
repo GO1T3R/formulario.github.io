@@ -398,6 +398,27 @@ button[disabled] {
   border-radius: 6px
 }
 
+/* Imagen móvil: huevito sobre el aviso de privacidad (solo en móvil) */
+.mobile-egg {
+  display: none;
+  position: relative;
+  margin: 8px auto 0;
+  width: 300px;
+  max-width: auto;
+  height: auto;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@media (max-width: 600px) {
+  .mobile-egg {
+    display: block;
+  }
+  .corner {
+    display: none;
+  }
+}
+
 .confirm-message.show {
   display: flex
 }
