@@ -129,13 +129,13 @@ function setGifsForCompany(company) {
     // Map company -> {loading, confirm} using option values
     if (key === 'le_king_poulet') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gv9Pp.gif'; // Le King Poulet cargando
-        if (confirmImg) confirmImg.src = 'https://iili.io/f6cCUDN.md.jpg'; // Le King Poulet adios https://iili.io/f4gvXOg.gif
+        if (confirmImg) confirmImg.src = 'https://iili.io/fs15yRS.md.png'; // Le King Poulet adios https://iili.io/f4gvXOg.gif
     } else if (key === 'guillegg') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gwWrX.gif'; // Guillegg cargando
-        if (confirmImg) confirmImg.src = 'https://iili.io/f6cKvZF.png'; // Guillegg adios https://iili.io/f4gOTUF.gif
+        if (confirmImg) confirmImg.src = 'https://iili.io/fs1R1YN.png'; // Guillegg adios https://iili.io/f4gOTUF.gif
     } else if (key === 'corporativo') {
         if (loadingImg) loadingImg.src = 'https://iili.io/f4gyK4S.gif'; // Corporativo cargando
-        if (confirmImg) confirmImg.src = 'https://iili.io/f4iS0IS.gif'; // Corporativo adios
+        if (confirmImg) confirmImg.src = 'https://iili.io/fs1TVTu.md.png'; // Corporativo adios
     } else {
         // default: huevo
         if (loadingImg) loadingImg.src = '/assets/cargando_huevo.gif';
@@ -252,4 +252,12 @@ form.addEventListener('submit', e => {
 // NO uses .then(res => res.json())
 // NO uses .catch()
 // En no-cors no hay respuesta legible
+
+
+// Marker
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".marker").forEach((el, i) => {
+    setTimeout(() => el.classList.add("show"), i * 200);
+  });
+});
 

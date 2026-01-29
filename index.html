@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    
+
     <div class="container">
 
         <!-- CARD UX -->
@@ -56,9 +56,11 @@
 
                     <select id="areaSelect" name="area" required>
                         <option value="">Area a evaluar</option>
-                        <option value="Operacion">Operación</option>
+                        <option value="Operacion">Entrega y Logistica</option>
                         <option value="Atencion">Atención al Cliente</option>
+                        <option value="Comunicacion_y_pedidos">Comunicación y pedidos</option>
                         <option value="Calidad">Calidad</option>
+
                     </select>
 
 
@@ -248,6 +250,50 @@
                     <button type="submit">Enviar encuesta</button>
                 </section>
 
+                <!--Comunicacion y Pedido-->
+                <section class="ux-step" data-area="Comunicacion_y_pedidos">
+
+                    <label class="pregunta">¿Qué tan fácil es realizar un pedido?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_producto" value="1"> Muy mala</label>
+                        <label><input type="radio" name="cal_producto" value="2"> Mala</label>
+                        <label><input type="radio" name="cal_producto" value="3"> Regular</label>
+                        <label><input type="radio" name="cal_producto" value="4"> Buena</label>
+                        <label><input type="radio" name="cal_producto" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Comunicacion_y_pedidos">
+                    <label class="pregunta">¿Recibe información clara sobre precios, promociones o cambios?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_expectativa" value="0"> No</label>
+                        <label><input type="radio" name="cal_expectativa" value=".5"> Parcialmente</label>
+                        <label><input type="radio" name="cal_expectativa" value="1"> Si</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Comunicacion_y_pedidos">
+                    <label class="pregunta">¿Cómo califica la comunicación con nuestro equipo comercial?</label>
+                    <div class="rating">
+                        <label><input type="radio" name="cal_producto" value="1"> Muy mala</label>
+                        <label><input type="radio" name="cal_producto" value="2"> Mala</label>
+                        <label><input type="radio" name="cal_producto" value="3"> Regular</label>
+                        <label><input type="radio" name="cal_producto" value="4"> Buena</label>
+                        <label><input type="radio" name="cal_producto" value="5"> Excelente</label>
+                    </div>
+                    <button type="button" class="next">Continuar</button>
+                </section>
+
+                <section class="ux-step" data-area="Comunicacion_y_pedidos">
+                    <h2>¿Algún comentario final?</h2>
+
+                    <textarea name="comentarios" placeholder="Escribe aquí..." rows="4"></textarea>
+
+                    <button type="submit">Enviar encuesta</button>
+                </section>
+
 
             </form>
         </div>
@@ -265,7 +311,7 @@
 
     <!-- CONFIRM -->
     <div id="confirmMessage" class="confirm-message" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="confirm-inner">
+        <div class="confirm-inner">
             <button class="confirm-close" aria-label="Cerrar">×</button>
             <img id="confirmImg" src="/assets/guillegg_adios.gif" alt="Listo" class="confirm-gif">
         </div>
@@ -273,7 +319,8 @@
 
 
     <footer class="footer-privacy" style="text-align:center; margin:16px 0;">
-        <a href="http://www.grupoavicoladelcaribe.com.mx/aviso-de-privacidad" target="_blank" rel="noopener noreferrer">Aviso de Privacidad</a>
+        <a href="http://www.grupoavicoladelcaribe.com.mx/aviso-de-privacidad" target="_blank"
+            rel="noopener noreferrer">Aviso de Privacidad</a>
     </footer>
 
     <script src="scripts.js"></script>

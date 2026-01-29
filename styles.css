@@ -85,6 +85,7 @@ html {
 }
 
 /* base para el marcador: posicionar el pseudo-elemento sobre el texto */
+
 .marker {
   position: relative;
   display: inline-block;
@@ -97,21 +98,21 @@ html {
   position: absolute;
   left: 0;
   right: 0;
-  /* cubrir la base del texto; ajustar para distintos tamaños */
-  top: 52%;
+  top: 22%;
   bottom: 8%;
   background: var(--marker);
   z-index: -1;
   transform-origin: left center;
   transform: scaleX(0) skewX(-10deg);
-  transition: transform 560ms cubic-bezier(.2,.9,.3,1), opacity 220ms;
   border-radius: 3px;
-  opacity: 0.95;
+
+  animation: markerDraw 3000ms cubic-bezier(.2,.9,.3,1) forwards;
 }
 
-/* añadir la clase .show para animar el marcador */
-.marker.show::after {
-  transform: scaleX(1) skewX(-10deg);
+@keyframes markerDraw {
+  to {
+    transform: scaleX(1) skewX(-10deg);
+  }
 }
 
 /* Progress: thin, minimal */
